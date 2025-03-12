@@ -1,20 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-		https://www.springframework.org/schema/beans/spring-beans.xsd">
+		https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd">
 
-    <bean id="pen" class="net.elpuig.Pen">
-        <!-- collaborators and configuration for this bean go here -->
-    </bean>
+    <!--
+        <bean id="pendrive" class="net.elpuig.Pendrive">
+        </bean>
+        <bean id="lector" class="net.elpuig.LectorDni">
+        </bean>
+        <bean id="ordenador" class="net.elpuig.Ordenador">
+            <property name="usb" ref="pen"></property>
+        </bean>
+    -->
 
-    <bean id="lector" class="net.elpuig.LectorDni">
-        <!-- collaborators and configuration for this bean go here -->
-    </bean>
-
-    <bean id="ordenador" class="net.elpuig.Ordenador">
-        <property name="usb" ref="pen"></property>
-    </bean>
-
+    <!--
+        Aqui le decimos a spring: oye tienes que escanear en el package para leer las anotaciones
+        de spring que se encuentran en esos archivos
+    -->
+    <!-- Esta linea hace escaneo de componentes, pero las clases deberan tener @Component con el nombre que queramos -->
+    <context:component-scan base-package="net.elpuig"></context:component-scan>
 
 </beans>
